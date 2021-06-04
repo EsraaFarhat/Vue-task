@@ -1,52 +1,55 @@
 <template>
   <div class="mainWrapper">
     <div class="slider">
-        <figure>
-          <div>
-            <img src="../assets/img/1.svg" alt="First Image">
-            <h2>Accelerate Your Entire Mobile Team Workflow</h2>
-          </div>
-          <div>
-            <img src="../assets/img/2.svg" alt="Second Image">
-            <h2>The Most Comprehensive Bug Reporting Tool For Mobile App</h2>
-          </div>
-          <div>
-            <img src="../assets/img/3.svg" alt="Third Image">
-            <h2>Secure Crach Reporting With Real-Time Alerts</h2>
-          </div>
-        </figure>
-      </div>
+      <figure>
+        <div>
+          <img src="../assets/img/1.svg" alt="First Image" />
+          <h2>Accelerate Your Entire Mobile Team Workflow</h2>
+        </div>
+        <div>
+          <img src="../assets/img/2.svg" alt="Second Image" />
+          <h2>The Most Comprehensive Bug Reporting Tool For Mobile App</h2>
+        </div>
+        <div>
+          <img src="../assets/img/3.svg" alt="Third Image" />
+          <h2>Secure Crach Reporting With Real-Time Alerts</h2>
+        </div>
+      </figure>
+    </div>
     <div class="login-form">
-        <div class="form-header">
-          <img src="../assets/logo.png" alt="" width="60" height="60" />
-          <h3>Log in to Instabug</h3>
-        </div>
-        <div class="social-media">
-          <button type="submit" id="google">
-            <img src="../assets/img/google.jpg" alt="" width="50" height="30" />
-            <span>Google</span>
-          </button>
-          <button type="submit" id="github">
-            <img src="../assets/img/github.png" alt="" width="50" height="30" />
-            Github
-          </button>
-          <button type="submit" id="microsoft">
-            <img
-              src="../assets/img/microsoft.png"
-              alt=""
-              width="50"
-              height="30"
-            />
-            Microsoft
-          </button>
-        </div>
+      <div class="form-header">
+        <img src="../assets/logo.png" alt="" width="60" height="60" />
+        <h3>Log in to Instabug</h3>
+      </div>
+      <div class="social-media">
+        <button type="submit" id="google">
+          <img src="../assets/img/google.jpg" alt="" width="50" height="30" />
+          <span>Google</span>
+        </button>
+        <button type="submit" id="github">
+          <img src="../assets/img/github.png" alt="" width="50" height="30" />
+          Github
+        </button>
+        <button type="submit" id="microsoft">
+          <img
+            src="../assets/img/microsoft.png"
+            alt=""
+            width="50"
+            height="30"
+          />
+          Microsoft
+        </button>
+      </div>
 
-        <hr style="width:47%; text-align:left;margin-left:0;float:left" />
-        <span style="float:left;padding-left:3px;">OR</span>
-        <hr style="width:47%; text-align:right;margin-right:0 float:right" />
+      <hr style="width:47%; text-align:left;margin-left:0;float:left" />
+      <span style="float:left;padding-left:3px;">OR</span>
+      <hr style="width:47%; text-align:right;margin-right:0 float:right" />
 
       <form method="get" @submit.prevent="submit" novalidate="true">
-        <div style="background-color:pink;padding:5px;text-align: center" v-if="errors.notValid">
+        <div
+          style="background-color:pink;padding:5px;text-align: center"
+          v-if="errors.notValid"
+        >
           <span>{{ errors.notValid }}</span>
         </div>
         <div class="email-div">
@@ -59,9 +62,7 @@
             id="email"
             placeholder="you@company.com"
           />
-          <span v-if="errors.email" style="color:red">
-            {{ errors.email }}</span
-          >
+          <span v-if="errors.email" style="color:red"> {{ errors.email }}</span>
         </div>
         <div class="password-div">
           <label style="float:left;width:50%" for="password">Password</label>
@@ -74,11 +75,18 @@
             id="password"
             placeholder="8+ Characters"
           />
-           <span v-if="errors.password" style="color:red;float:left">
+          <span v-if="errors.password" style="color:red;float:left">
             {{ errors.password }}</span
           >
         </div>
-        <button type="submit" :class="disabled ? 'disabled' : 'submit'" :disabled="disabled" id="login">Log in</button>
+        <button
+          type="submit"
+          :class="disabled ? 'disabled' : 'submit'"
+          :disabled="disabled"
+          id="login"
+        >
+          Log in
+        </button>
         <div style="padding-top:4px">
           <span
             >Dont't have an account?
@@ -94,28 +102,23 @@
         <div class="companies">
           <img
             src="../assets/img/c1.png"
-            alt=""
-            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+            alt="LUA"
           />
           <img
             src="../assets/img/c2.png"
-            alt=""
-            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+            alt="BuzzFeeD"
           />
           <img
             src="../assets/img/c3.png"
-            alt=""
-            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+            alt="asana"
           />
           <img
             src="../assets/img/c4.png"
-            alt=""
-            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+            alt="ONEPLUS"
           />
           <img
             src="../assets/img/c5.png"
-            alt=""
-            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+            alt="Houseparty"
           />
         </div>
       </form>
@@ -123,74 +126,76 @@
   </div>
 </template>
 <script>
-import {users} from '../users'
+import { users } from "../users";
 
 export default {
   data: () => ({
-    users:users,
-    user:{
-        email:"",
-        password:""
+    users: users,
+    user: {
+      email: "",
+      password: "",
     },
-    errors:{},
-    disabled:true,
+    errors: {},
+    disabled: true,
     flag: false,
   }),
-  methods:{
-      submit: function(e) {
-        this.errors = {};
-        if (!this.emailValidation(this.user.email)) {
-            this.errors.email = "Enter a valid email address.";
-        }
-        if (!this.passwordValidation(this.user.password)) {
-            this.errors.password = "Password must be 6 characters or more.";
-        }
+  methods: {
+    submit: function(e) {
+      this.errors = {};
+      if (!this.emailValidation(this.user.email)) {
+        this.errors.email = "Enter a valid email address.";
+      }
+      if (!this.passwordValidation(this.user.password)) {
+        this.errors.password = "Password must be 6 characters or more.";
+      }
 
-        if (
-            this.errors &&
-            Object.keys(this.errors).length === 0 &&
-            this.errors.constructor === Object
-        ) {
-            for(let i=0; i < users.length; i++){
-              if(users[i].email === this.user.email && users[i].password === this.user.password){
-                localStorage.setItem('logged_in_email', this.user.email);
-                this.flag = true;
-                this.$router.push('/welcome');
-                break;
-              }
-            }
-            if(this.flag == false){
-              this.errors.notValid = "Your email and/or your password are incorrect.";
-            }
+      if (
+        this.errors &&
+        Object.keys(this.errors).length === 0 &&
+        this.errors.constructor === Object
+      ) {
+        for (let i = 0; i < users.length; i++) {
+          if (
+            users[i].email === this.user.email &&
+            users[i].password === this.user.password
+          ) {
+            localStorage.setItem("logged_in_email", this.user.email);
+            this.flag = true;
+            this.$router.push("/welcome");
+            break;
+          }
         }
+        if (this.flag == false) {
+          this.errors.notValid =
+            "Your email and/or your password are incorrect.";
+        }
+      }
 
-        e.preventDefault();
+      e.preventDefault();
     },
     emailValidation: function(email) {
       let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
     passwordValidation: function(password) {
-        let email_address_name = this.user.email.split('@')[0];
-        let re = /^(?=.{8,}$)(?=.*?[A-Z]).*$/;
-        return re.test(password) && !(password.includes(email_address_name));
+      let email_address_name = this.user.email.split("@")[0];
+      let re = /^(?=.{8,}$)(?=.*?[A-Z]).*$/;
+      return re.test(password) && !password.includes(email_address_name);
     },
-  checkValidation(){
+    checkValidation() {
       this.errors.email = "";
       this.errors.password = "";
-        if (!this.emailValidation(this.user.email)) {
-            this.errors.email = "Enter a valid email address.";
-        }
-        if (!this.passwordValidation(this.user.password)) {
-            this.errors.password = "Password must be 6 characters or more.";
-        }
-        if (
-            this.errors.email == "" &&
-            this.errors.password == ""
-        ) {
-            this.disabled = false
-        }
-  }
+      this.disabled = true;
+      if (!this.emailValidation(this.user.email)) {
+        this.errors.email = "Enter a valid email address.";
+      }
+      if (!this.passwordValidation(this.user.password)) {
+        this.errors.password = "Password must be 6 characters or more.";
+      }
+      if (this.errors.email == "" && this.errors.password == "") {
+        this.disabled = false;
+      }
+    },
   },
 };
 </script>
@@ -206,41 +211,44 @@ $ImagesNumber: 3;
   background-color: #002276;
   overflow: hidden;
   padding: 5% 0;
-}
-.slider figure {
-  position: relative;
-  width: 300%;
-  margin: 0;
-  left: 0;
-  animation: 15s slider infinite;
-}
-.slider figure div{
-  float: left;
-  width: $fullWidth / $ImagesNumber;
-  text-align: center;
 
+  figure {
+    position: relative;
+    width: 300%;
+    margin: 0;
+    left: 0;
+    animation: 15s slider infinite;
+
+    div {
+      float: left;
+      width: $fullWidth / $ImagesNumber;
+      text-align: center;
+
+      h2 {
+        color: white;
+      }
+    }
+  }
 }
-.slider figure div h2{
-  color: white;
-}
+
 @keyframes slider {
-  0%{
-      left: 0;
+  0% {
+    left: 0;
   }
-  33%{
-      left: 0;
+  33% {
+    left: 0;
   }
-  35%{
-      left: -100%;
+  35% {
+    left: -$fullWidth;
   }
-  66%{
-      left: -100%;
+  66% {
+    left: -$fullWidth;
   }
-  70%{
+  70% {
     left: -200%;
   }
-  100%{
-      left: -200%;
+  100% {
+    left: -200%;
   }
 }
 .login-form {
@@ -254,36 +262,32 @@ $ImagesNumber: 3;
 }
 .social-media {
   padding-bottom: 2%;
-}
-.social-media button {
-  width: 100%;
-  margin: 1%;
-  height: 40px;
-  border: none;
-  border-radius: 2%;
-  color: white;
-  display: block;
-  line-height: 30px;
-}
-.social-media button img {
-  float: left;
-  width: 8%;
-}
-social-media button span {
-  float: left;
-  width: 80%;
-  margin-top: 100px;
-  align-content: center;
-}
-.social-media #google {
-  background-color: #2d84fc;
-}
-.social-media #github {
-  background-color: #333333;
-}
-.social-media #microsoft {
-  color: black;
-  border: 1px solid gray;
+
+  button {
+    width: $fullWidth;
+    margin: 1%;
+    height: 40px;
+    border: none;
+    border-radius: 2%;
+    color: white;
+    display: block;
+    line-height: 30px;
+
+    img {
+      float: left;
+      width: 8%;
+    }
+  }
+  #google {
+    background-color: #2d84fc;
+  }
+  #github {
+    background-color: #333333;
+  }
+  #microsoft {
+    color: black;
+    border: 1px solid gray;
+  }
 }
 
 .email-div {
@@ -293,7 +297,7 @@ social-media button span {
 input,
 label {
   float: left;
-  width: 100%;
+  width: $fullWidth;
   margin-bottom: 1%;
 }
 .email-div #email,
@@ -302,37 +306,45 @@ label {
   margin-bottom: 2%;
   border: 1px solid lightgray;
   padding-left: 5px;
+
+  &:focus {
+    border-color: #46a1ec;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+      0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+      0 0 8px rgba(102, 175, 233, 0.6);
+  }
 }
-.email-div #email:focus,
-#password:focus {
-  border-color: #46a1ec;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-    0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-    0 0 8px rgba(102, 175, 233, 0.6);
-}
+
 .submit {
-  width: 100%;
+  width: $fullWidth;
   height: 40px;
   border: none;
   border-radius: 2%;
   background-color: #0e99ff;
   color: white;
-}
-.submit:hover{
+
+  &:hover {
     cursor: pointer;
     opacity: 0.8;
+  }
 }
-.disabled{
-    width: 100%;
-    height: 40px;
-    border: none;
-    border-radius: 2%;
-    background-color: lightgray;
-    color: white;
+.disabled {
+  width: $fullWidth;
+  height: 40px;
+  border: none;
+  border-radius: 2%;
+  background-color: lightgray;
+  color: white;
 }
 .companies {
   margin-left: 2%;
+  margin-top:20px;
+  img{
+    width:18%;
+    height:40px;
+    margin-left:10px;
+  }
 }
 </style>
