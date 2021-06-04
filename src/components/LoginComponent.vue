@@ -197,6 +197,12 @@ export default {
       }
     },
   },
+  created() {
+    this.email = localStorage.getItem("logged_in_email");
+    if (this.email != null) {
+      this.$router.push("/welcome");
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>
