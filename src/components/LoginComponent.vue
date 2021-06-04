@@ -9,7 +9,6 @@
             </figure>
         </div> -->
     <div class="login-form">
-      <form method="post" @submit.prevent="submit" novalidate="true">
         <div class="form-header">
           <img src="../assets/logo.png" alt="" width="60" height="60" />
           <h3>Log in to Instabug</h3>
@@ -38,14 +37,22 @@
         <span style="float:left;padding-left:3px;">OR</span>
         <hr style="width:47%; text-align:right;margin-right:0 float:right" />
 
+      <form method="get" @submit.prevent="submit" novalidate="true">
+        <div style="background-color:pink;padding:5px;text-align: center" v-if="errors.notValid">
+          <span>{{ errors.notValid }}</span>
+        </div>
         <div class="email-div">
           <label for="email">Work Email</label>
           <input
             type="email"
             name="email"
+            v-model="user.email"
             id="email"
             placeholder="you@company.com"
           />
+          <span v-if="errors.email" style="color:red">
+            {{ errors.email }}</span
+          >
         </div>
         <div class="password-div">
           <label style="float:left;width:50%" for="password">Password</label>
@@ -53,11 +60,15 @@
           <input
             type="password"
             name="password"
+            v-model="user.password"
             id="password"
             placeholder="8+ Characters"
           />
+           <span v-if="errors.password" style="color:red;float:left">
+            {{ errors.password }}</span
+          >
         </div>
-        <button type="submit" class="submit">Log in</button>
+        <button type="submit" :class="disabled ? 'disabled' : 'submit'" :disabled="disabled">Log in</button>
         <div style="padding-top:4px">
           <span
             >Dont't have an account?
@@ -102,11 +113,75 @@
   </div>
 </template>
 <script>
+import {users} from '../users'
+
 export default {
-  data: () => ({}),
-  created() {
-    // localStorage.setItem('logged_in_email', "mohamed@instabug.com")
+  data: () => ({
+    users:users,
+    user:{
+        email:"",
+        password:""
+    },
+    errors:{},
+    disabled:true,
+    flag: false,
+  }),
+  methods:{
+      submit: function(e) {
+        this.errors = {};
+        if (!this.emailValidation(this.user.email)) {
+            this.errors.email = "Enter a valid email address.";
+        }
+        if (!this.passwordValidation(this.user.password)) {
+            this.errors.password = "Password must be 6 characters or more.";
+        }
+
+        if (
+            this.errors &&
+            Object.keys(this.errors).length === 0 &&
+            this.errors.constructor === Object
+        ) {
+            for(let i=0; i < users.length; i++){
+              if(users[i].email === this.user.email && users[i].password === this.user.password){
+                localStorage.setItem('logged_in_email', this.user.email);
+                this.flag = true;
+                this.$router.push('/welcome');
+                break;
+              }
+            }
+            if(this.flag == false){
+              this.errors.notValid = "Your email and/or your password are incorrect.";
+            }
+        }
+
+        e.preventDefault();
+    },
+    emailValidation: function(email) {
+      let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
+    passwordValidation: function(password) {
+        let email_address_name = this.user.email.split('@')[0];
+        let re = /^(?=.{8,}$)(?=.*?[A-Z]).*$/;
+        return re.test(password) && !(password.includes(email_address_name));
+    },
   },
+  updated(){
+      this.errors.email = "";
+      this.errors.password = "";
+        if (!this.emailValidation(this.user.email)) {
+            this.errors.email = "Enter a valid email address.";
+        }
+        if (!this.passwordValidation(this.user.password)) {
+            this.errors.password = "Password must be 6 characters or more.";
+        }
+        if (
+            this.errors.email == "" &&
+            this.errors.password == ""
+        ) {
+            this.disabled = false
+        }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -251,7 +326,18 @@ label {
   background-color: #0e99ff;
   color: white;
 }
-
+.submit:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.disabled{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 2%;
+    background-color: lightgray;
+    color: white;
+}
 .companies {
   margin-left: 2%;
 }
