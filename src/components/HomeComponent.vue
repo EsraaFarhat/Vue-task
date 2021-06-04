@@ -1,6 +1,8 @@
 <template>
-    <h1>Welcome to {{ email }}</h1>
-    <button type="submit" @click="logout">logout</button>
+    <div class="mainwrapper">
+        <h1>Welcome to {{ email }}</h1>
+        <button type="submit" @click="logout">logout</button>
+    </div>
 </template>
 <script>
 export default {
@@ -21,3 +23,24 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+.mainwrapper{
+    text-align: center;
+}
+.mainwrapper h1{
+    background-color:darkgray;
+    padding: 2% 0;
+}
+.mainwrapper button{
+    width: 10%;
+    height: 40px;
+    border: none;
+    border-radius: 2%;
+    background-color: #ff0e42;
+    color: white;
+}
+.mainwrapper button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+</style>

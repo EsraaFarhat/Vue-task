@@ -195,9 +195,7 @@ export default {
 <style lang="scss" scoped>
 $fullWidth: 100%;
 $ImagesNumber: 3;
-.mainWrapper {
-  // justify-content: space-around;
-}
+
 .slider {
   float: left;
   width: 45%;
@@ -220,23 +218,13 @@ $ImagesNumber: 3;
   text-align: center;
 
 }
-.slider figure div img {
-  // float: left;
-  // width: $fullWidth / $ImagesNumber;
-  // padding-left:2px ;
-}
 .slider figure div h2{
   color: white;
-  // float: right;
-  // text-align: center;
 }
 @keyframes slider {
   0%{
       left: 0;
   }
-  // 33%{
-  //     left: 0;
-  // }
   33%{
       left: 0;
   }
@@ -257,7 +245,6 @@ $ImagesNumber: 3;
   float: left;
   width: 40%;
   margin-left: 5%;
-  //    background-color: lightgray;
 }
 
 .form-header {
