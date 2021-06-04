@@ -1,10 +1,258 @@
 <template>
-    <h1>Login page</h1>
+  <div class="mainWrapper">
+    <!-- <div class="slider">
+            <figure>
+                <img src="../assets/img/1.svg" alt="First Image">
+                <img src="../assets/img/2.svg" alt="Second Image">
+                <img src="../assets/img/3.svg" alt="Third Image">
+
+            </figure>
+        </div> -->
+    <div class="login-form">
+      <form method="post" @submit.prevent="submit" novalidate="true">
+        <div class="form-header">
+          <img src="../assets/logo.png" alt="" width="60" height="60" />
+          <h3>Log in to Instabug</h3>
+        </div>
+        <div class="social-media">
+          <button type="submit" id="google">
+            <img src="../assets/img/google.jpg" alt="" width="50" height="30" />
+            <span>Google</span>
+          </button>
+          <button type="submit" id="github">
+            <img src="../assets/img/github.png" alt="" width="50" height="30" />
+            Github
+          </button>
+          <button type="submit" id="microsoft">
+            <img
+              src="../assets/img/microsoft.png"
+              alt=""
+              width="50"
+              height="30"
+            />
+            Microsoft
+          </button>
+        </div>
+
+        <hr style="width:47%; text-align:left;margin-left:0;float:left" />
+        <span style="float:left;padding-left:3px;">OR</span>
+        <hr style="width:47%; text-align:right;margin-right:0 float:right" />
+
+        <div class="email-div">
+          <label for="email">Work Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="you@company.com"
+          />
+        </div>
+        <div class="password-div">
+          <label style="float:left;width:50%" for="password">Password</label>
+          <span style="float:right;color:gray">Forget password?</span>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="8+ Characters"
+          />
+        </div>
+        <button type="submit" class="submit">Log in</button>
+        <div style="padding-top:4px">
+          <span
+            >Dont't have an account?
+            <a href="#" style="text-decoration:none; color:#0e99ff">register</a>
+          </span>
+          <a href="#" style="text-decoration:none; color:#0e99ff;float:right"
+            >Login via SSO</a
+          >
+        </div>
+        <div style="text-align: center;color:gray; padding-top:15px">
+          <span>Trusted by the top companies.</span>
+        </div>
+        <div class="companies">
+          <img
+            src="../assets/img/c1.png"
+            alt=""
+            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+          />
+          <img
+            src="../assets/img/c2.png"
+            alt=""
+            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+          />
+          <img
+            src="../assets/img/c3.png"
+            alt=""
+            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+          />
+          <img
+            src="../assets/img/c4.png"
+            alt=""
+            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+          />
+          <img
+            src="../assets/img/c5.png"
+            alt=""
+            style="width:18%;height:40px;margin-left:10px;margin-top:20px"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-    created(){
-        // localStorage.setItem('logged_in_email', "mohamed@instabug.com")
-    }
-}
+  data: () => ({}),
+  created() {
+    // localStorage.setItem('logged_in_email', "mohamed@instabug.com")
+  },
+};
 </script>
+<style lang="scss" scoped>
+$fullWidth: 100%;
+$ImagesNumber: 3;
+.mainWrapper {
+  // justify-content: space-around;
+}
+.slider {
+  float: left;
+  width: 40%;
+  margin-right: 5%;
+  background-color: #002276;
+  overflow: hidden;
+  padding: 5% 5%;
+}
+.slider figure {
+  position: relative;
+  width: 350%;
+  margin: 0;
+  left: 0;
+  animation: 10s slider infinite;
+}
+.slider figure img {
+  float: left;
+  width: $fullWidth / $ImagesNumber;
+  // margin-left:2px ;
+}
+@keyframes slider {
+  from {
+    left: 0;
+  }
+  50% {
+    left: -150%;
+  }
+  to {
+    left: -250%;
+  }
+  // 0%{
+  //     left: 0;
+  // }
+  // 33%{
+  //     left: 0;
+  // }
+  // 40%{
+  //     left: -160%;
+  // }
+  // 60%{
+  //     left: -160%;
+  // }
+  // 67%{
+  //     left: -300%;
+  // }
+  // 95%{
+  //     left: -300%;
+  // }
+  // 75%{
+  //     left: -300%;
+  // }
+  // 95%{
+  //     left: -300%;
+  // }
+  // 100%{
+  //     left: -300%;
+  // }
+}
+.login-form {
+  float: left;
+  width: 40%;
+  margin-left: 5%;
+  //    background-color: lightgray;
+}
+
+.form-header {
+  text-align: center;
+}
+.social-media {
+  padding-bottom: 2%;
+}
+.social-media button {
+  width: 100%;
+  margin: 1%;
+  height: 40px;
+  border: none;
+  border-radius: 2%;
+  color: white;
+  display: block;
+  line-height: 30px;
+}
+.social-media button img {
+  float: left;
+  width: 8%;
+}
+social-media button span {
+  float: left;
+  width: 80%;
+  margin-top: 100px;
+  align-content: center;
+}
+.social-media #google {
+  background-color: #2d84fc;
+}
+.social-media #github {
+  background-color: #333333;
+}
+.social-media #microsoft {
+  color: black;
+  border: 1px solid gray;
+}
+
+.email-div {
+  padding-top: 2%;
+}
+.email-div label,
+input,
+label {
+  float: left;
+  width: 100%;
+  margin-bottom: 1%;
+}
+.email-div #email,
+#password {
+  height: 30px;
+  margin-bottom: 2%;
+  border: 1px solid lightgray;
+  padding-left: 5px;
+}
+.email-div #email:focus,
+#password:focus {
+  border-color: #46a1ec;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+}
+.submit {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 2%;
+  background-color: #0e99ff;
+  color: white;
+}
+
+.companies {
+  margin-left: 2%;
+}
+</style>
