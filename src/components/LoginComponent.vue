@@ -1,13 +1,21 @@
 <template>
   <div class="mainWrapper">
-    <!-- <div class="slider">
-            <figure>
-                <img src="../assets/img/1.svg" alt="First Image">
-                <img src="../assets/img/2.svg" alt="Second Image">
-                <img src="../assets/img/3.svg" alt="Third Image">
-
-            </figure>
-        </div> -->
+    <div class="slider">
+        <figure>
+          <div>
+            <img src="../assets/img/1.svg" alt="First Image">
+            <h2>Accelerate Your Entire Mobile Team Workflow</h2>
+          </div>
+          <div>
+            <img src="../assets/img/2.svg" alt="Second Image">
+            <h2>The Most Comprehensive Bug Reporting Tool For Mobile App</h2>
+          </div>
+          <div>
+            <img src="../assets/img/3.svg" alt="Third Image">
+            <h2>Secure Crach Reporting With Real-Time Alerts</h2>
+          </div>
+        </figure>
+      </div>
     <div class="login-form">
         <div class="form-header">
           <img src="../assets/logo.png" alt="" width="60" height="60" />
@@ -192,61 +200,58 @@ $ImagesNumber: 3;
 }
 .slider {
   float: left;
-  width: 40%;
+  width: 45%;
+  height: 490px;
   margin-right: 5%;
   background-color: #002276;
   overflow: hidden;
-  padding: 5% 5%;
+  padding: 5% 0;
 }
 .slider figure {
   position: relative;
-  width: 350%;
+  width: 300%;
   margin: 0;
   left: 0;
-  animation: 10s slider infinite;
+  animation: 15s slider infinite;
 }
-.slider figure img {
+.slider figure div{
   float: left;
   width: $fullWidth / $ImagesNumber;
-  // margin-left:2px ;
+  text-align: center;
+
+}
+.slider figure div img {
+  // float: left;
+  // width: $fullWidth / $ImagesNumber;
+  // padding-left:2px ;
+}
+.slider figure div h2{
+  color: white;
+  // float: right;
+  // text-align: center;
 }
 @keyframes slider {
-  from {
-    left: 0;
+  0%{
+      left: 0;
   }
-  50% {
-    left: -150%;
-  }
-  to {
-    left: -250%;
-  }
-  // 0%{
-  //     left: 0;
-  // }
   // 33%{
   //     left: 0;
   // }
-  // 40%{
-  //     left: -160%;
-  // }
-  // 60%{
-  //     left: -160%;
-  // }
-  // 67%{
-  //     left: -300%;
-  // }
-  // 95%{
-  //     left: -300%;
-  // }
-  // 75%{
-  //     left: -300%;
-  // }
-  // 95%{
-  //     left: -300%;
-  // }
-  // 100%{
-  //     left: -300%;
-  // }
+  33%{
+      left: 0;
+  }
+  35%{
+      left: -100%;
+  }
+  66%{
+      left: -100%;
+  }
+  70%{
+    left: -200%;
+  }
+  100%{
+      left: -200%;
+  }
 }
 .login-form {
   float: left;
