@@ -55,6 +55,7 @@
             type="email"
             name="email"
             v-model="user.email"
+            @input="checkValidation"
             id="email"
             placeholder="you@company.com"
           />
@@ -69,6 +70,7 @@
             type="password"
             name="password"
             v-model="user.password"
+            @input="checkValidation"
             id="password"
             placeholder="8+ Characters"
           />
@@ -76,7 +78,7 @@
             {{ errors.password }}</span
           >
         </div>
-        <button type="submit" :class="disabled ? 'disabled' : 'submit'" :disabled="disabled">Log in</button>
+        <button type="submit" :class="disabled ? 'disabled' : 'submit'" :disabled="disabled" id="login">Log in</button>
         <div style="padding-top:4px">
           <span
             >Dont't have an account?
@@ -173,8 +175,7 @@ export default {
         let re = /^(?=.{8,}$)(?=.*?[A-Z]).*$/;
         return re.test(password) && !(password.includes(email_address_name));
     },
-  },
-  updated(){
+  checkValidation(){
       this.errors.email = "";
       this.errors.password = "";
         if (!this.emailValidation(this.user.email)) {
@@ -190,6 +191,7 @@ export default {
             this.disabled = false
         }
   }
+  },
 };
 </script>
 <style lang="scss" scoped>
